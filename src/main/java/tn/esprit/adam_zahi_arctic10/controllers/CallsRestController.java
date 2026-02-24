@@ -33,7 +33,7 @@ public class CallsRestController {
         return callsServices.getById(id);
     }
 
-    @GetMapping("all")
+    @GetMapping("get")
     public List<Calls> getAllCalls(){
         return callsServices.getAll();
     }
