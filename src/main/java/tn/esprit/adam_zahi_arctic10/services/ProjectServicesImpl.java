@@ -52,4 +52,5 @@ public class ProjectServicesImpl implements IProjectServices{
         Project project = projectRepository.findById(projectId).orElseThrow(()->new EntityNotFoundException("Project with id "+projectId+" not found"));
         return project.getAgents().stream().toList();
     }
+
 }

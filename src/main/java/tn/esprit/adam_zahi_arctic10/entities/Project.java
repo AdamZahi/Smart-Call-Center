@@ -13,7 +13,7 @@ import java.util.Set;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+
 @Entity
 public class Project {
 
