@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.adam_zahi_arctic10.entities.CallStatus;
 import tn.esprit.adam_zahi_arctic10.entities.Calls;
 import tn.esprit.adam_zahi_arctic10.repositories.ICallsRepository;
 
@@ -23,6 +24,8 @@ public class CallsServicesImpl implements ICallsServices{
 
     @Override
     public Calls addCall(Calls call) {
+        call.setCallsDateTime(java.time.LocalDateTime.now());
+        call.setStatus(CallStatus.ON_HOLD);
         return callsRepository.save(call);
     }
 
