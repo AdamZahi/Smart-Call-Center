@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.adam_zahi_arctic10.entities.AISystem;
 import tn.esprit.adam_zahi_arctic10.repositories.IAISystemRepository;
-import tn.esprit.adam_zahi_arctic10.repositories.ICallsRepository;
 
 import java.util.List;
 
