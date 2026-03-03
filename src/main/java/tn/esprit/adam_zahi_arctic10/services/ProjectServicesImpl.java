@@ -4,7 +4,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.adam_zahi_arctic10.entities.Agent;
-import tn.esprit.adam_zahi_arctic10.entities.Calls;
 import tn.esprit.adam_zahi_arctic10.entities.Project;
 import tn.esprit.adam_zahi_arctic10.repositories.IAgentRepository;
 import tn.esprit.adam_zahi_arctic10.repositories.IProjectRepository;
@@ -16,6 +15,7 @@ import java.util.List;
 public class ProjectServicesImpl implements IProjectServices{
 
     private final IProjectRepository projectRepository;
+    private final IAgentRepository agentRepository;
 
     @Override
     public Project addProject(Project project) {
@@ -51,6 +51,14 @@ public class ProjectServicesImpl implements IProjectServices{
     public List<Agent> getAgents(long projectId) {
         Project project = projectRepository.findById(projectId).orElseThrow(()->new EntityNotFoundException("Project with id "+projectId+" not found"));
         return project.getAgents().stream().toList();
+    }
+
+    @Override
+    public Project assignToAgent(long projectId, long agentId) {
+        Project project = projectRepository.findById(projectId).orElseThrow(()->new EntityNotFoundException("Project with id "+projectId+" not found"));
+        Agent agent = agentRepository.findById(agentId).orElseThrow(()->new EntityNotFoundException("Agent with id "+agentId+" not found"));
+        project.getAgents().add(agent); // affectation du projet à l'agent
+        return projectRepository.save(project);
     }
 
 }

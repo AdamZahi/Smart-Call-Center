@@ -17,4 +17,5 @@ public interface IProjectServices {
     List<Project> getAll();
 
     List<Agent> getAgents(long projectId);
+    Project assignToAgent(long projectId, long agentId);
 }
