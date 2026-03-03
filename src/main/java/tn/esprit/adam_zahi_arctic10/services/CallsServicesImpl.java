@@ -66,4 +66,11 @@ public class CallsServicesImpl implements ICallsServices{
 
         return callsRepository.save(call);
     }
+
+    @Override
+    public Calls assignedToAgent(Calls call, long agentId) {
+            Agent agent = agentRepository.findById(agentId).orElseThrow(()->new EntityNotFoundException("agent with the id "+agentId+" not found"));
+            call.setAssignedAgent(agent);
+        return callsRepository.save(call);
+    }
 }

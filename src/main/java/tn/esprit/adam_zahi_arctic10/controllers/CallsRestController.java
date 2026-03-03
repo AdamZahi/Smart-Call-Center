@@ -48,4 +48,9 @@ public class CallsRestController {
     public Calls assignedToAgent(@PathVariable long callId, @PathVariable long agentId) {
         return callsServices.assignedToAgent(callId, agentId);
     }
+
+    @PostMapping("addAndAssignToAgent/{agentId}")
+    Calls assignedToAgent (@RequestBody Calls call, @PathVariable long agentId){
+        return callsServices.assignedToAgent(call, agentId);
+    }
 }

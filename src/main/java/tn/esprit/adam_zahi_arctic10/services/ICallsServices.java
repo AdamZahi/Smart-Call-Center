@@ -11,4 +11,5 @@ public interface ICallsServices {
     Calls getById(long callId);
     List<Calls> getAll();
     Calls assignedToAgent (long callId, long agentId);
+    Calls assignedToAgent (Calls call, long agentId);
 }
