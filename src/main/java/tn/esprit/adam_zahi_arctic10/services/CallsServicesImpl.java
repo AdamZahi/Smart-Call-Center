@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.adam_zahi_arctic10.entities.Agent;
 import tn.esprit.adam_zahi_arctic10.entities.CallStatus;
 import tn.esprit.adam_zahi_arctic10.entities.Calls;
+import tn.esprit.adam_zahi_arctic10.repositories.IAgentRepository;
 import tn.esprit.adam_zahi_arctic10.repositories.ICallsRepository;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CallsServicesImpl implements ICallsServices{
 
     private final ICallsRepository callsRepository;
+    private final IAgentRepository agentRepository;
 
 //    @Autowired
 //    public void setCallsRepository(ICallsRepository callsRepository) {
@@ -52,5 +55,13 @@ public class CallsServicesImpl implements ICallsServices{
     @Override
     public List<Calls> getAll() {
         return callsRepository.findAll();
+    }
+
+    @Override
+    public Calls assignedToAgent(long callId, long agentId) {
+        Calls call = callsRepository.findById(callId).orElseThrow(()->new EntityNotFoundException("call with the id "+callId+" not found"));
+        Agent agent = agentRepository.findById(agentId).orElseThrow(()->new EntityNotFoundException("agent with the id "+agentId+" not found"));
+        call.setAssignedAgent(agent); //affectation
+        return callsRepository.save(call);
     }
 }

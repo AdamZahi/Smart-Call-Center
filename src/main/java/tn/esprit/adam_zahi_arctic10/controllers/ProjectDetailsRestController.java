@@ -16,22 +16,22 @@ public class ProjectDetailsRestController {
         projectDetailsService.addProjectDetails(projectDetails);
     }
 
-    @PostMapping("update")
+    @PutMapping("update")
     public void updateProjectDetails(@RequestBody ProjectDetails projectDetails) {
         projectDetailsService.updateProjectDetails(projectDetails);
     }
 
-    @PostMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteProjectDetailsById(@PathVariable long id) {
         projectDetailsService.deleteById(id);
     }
 
-    @PostMapping("get")
+    @GetMapping("get")
     public void getAll() {
         projectDetailsService.getAll();
     }
 
-    @PostMapping("get/{id}")
+    @GetMapping("get/{id}")
     public ProjectDetails getById(@PathVariable long id) {
         return projectDetailsService.getById(id);
     }

@@ -16,22 +16,22 @@ public class AgentRestController {
         agentService.addAgent(agent);
     }
 
-    @PostMapping("update")
+    @PutMapping("update")
     public void updateAgent(@RequestBody Agent agent) {
         agentService.updateAgent(agent);
     }
 
-    @PostMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteAgentById(@PathVariable long id) {
         agentService.deleteById(id);
     }
 
-    @PostMapping("get/{id}")
+    @GetMapping("get/{id}")
     public Agent getAgentById(@PathVariable long id) {
         return agentService.getById(id);
     }
 
-    @PostMapping("get")
+    @GetMapping("get")
     public void getAll() {
         agentService.getAll();
     }

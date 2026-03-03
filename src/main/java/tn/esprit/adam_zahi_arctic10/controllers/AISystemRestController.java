@@ -16,22 +16,22 @@ public class AISystemRestController {
         aiSystemService.addAISystem(aiSystem);
     }
 
-    @PostMapping("update")
+    @PutMapping("update")
     public void updateAISystem(@RequestBody AISystem aiSystem) {
         aiSystemService.updateAISystem(aiSystem);
     }
 
-    @PostMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public void deleteAISystemById(@PathVariable long id) {
         aiSystemService.deleteById(id);
     }
 
-    @PostMapping("get/{id}")
+    @GetMapping("get/{id}")
     public AISystem getAISystemById(@PathVariable long id) {
         return aiSystemService.getById(id);
     }
 
-    @PostMapping("get")
+    @GetMapping("get")
     public void getAll() {
         aiSystemService.getAll();
     }
