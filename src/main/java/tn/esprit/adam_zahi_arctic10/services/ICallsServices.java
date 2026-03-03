@@ -8,7 +8,7 @@ public interface ICallsServices {
     Calls addCall(Calls call);
     Calls updateCall(Calls call);
     void deleteById(long callId);
-    void deleteCall(Calls call);
     Calls getById(long callId);
     List<Calls> getAll();
+    Calls assignedToAgent (long callId, long agentId);
 }

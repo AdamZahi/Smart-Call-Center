@@ -16,13 +16,13 @@ public class CallsRestController {
 
     // http:://localhost:8082/api/calls/add
     @PostMapping("add")
-    public Calls addCalls(@RequestBody Calls call){
+    public Calls addCalls(@RequestBody Calls call) {
         return callsServices.addCall(call);
     }
 
     // http:://localhost:8082/api/calls/update
     @PutMapping("update")
-    public Calls updateCalls(@RequestBody Calls call){
+    public Calls updateCalls(@RequestBody Calls call) {
         return callsServices.updateCall(call);
     }
 
@@ -40,7 +40,12 @@ public class CallsRestController {
 
     // http:://localhost:8082/api/calls/get
     @GetMapping("get")
-    public List<Calls> getAllCalls(){
+    public List<Calls> getAllCalls() {
         return callsServices.getAll();
+    }
+
+    @PutMapping("assignToAgent/{callId}/{agentId}")
+    public Calls assignedToAgent(@PathVariable long callId, @PathVariable long agentId) {
+        return callsServices.assignedToAgent(callId, agentId);
     }
 }
