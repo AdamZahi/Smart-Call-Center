@@ -36,4 +36,8 @@ public class AgentRestController {
         agentService.getAll();
     }
 
+    @PostMapping("addAndAssignToProjects")
+    public Agent AddAndAssignToProjects(@RequestBody Agent agent) {
+        return agentService.AddAndAssignToProjects(agent);
+    }
 }
