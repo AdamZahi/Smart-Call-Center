@@ -4,7 +4,9 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.adam_zahi_arctic10.entities.Agent;
+import tn.esprit.adam_zahi_arctic10.entities.Project;
 import tn.esprit.adam_zahi_arctic10.repositories.IAgentRepository;
+import tn.esprit.adam_zahi_arctic10.repositories.IProjectRepository;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class AgentServiceImpl implements IAgentService {
 
     private final IAgentRepository agentRepository;
+    private final IProjectRepository projectRepository;
 
     @Override
     public Agent addAgent(Agent agent) {
@@ -42,5 +45,15 @@ public class AgentServiceImpl implements IAgentService {
     @Override
     public List<Agent> getAll() {
         return agentRepository.findAll();
+    }
+
+    @Override
+    public Agent AddAndAssignToProjects(Agent agent) {
+        Agent newAgent= agentRepository.save(agent);
+        for(Project aProject: agent.getProjects()){
+            aProject.getAgents().add(newAgent);
+            projectRepository.save(aProject);
+        }
+        return newAgent;
     }
 }
