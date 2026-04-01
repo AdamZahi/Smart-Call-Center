@@ -11,7 +11,7 @@ public interface ICallsRepository extends JpaRepository<Calls, Long> {
     List<Calls> findByStatusAndAssignedAgent_AgentsId(CallStatus status, long agentId);
     List<Calls> findByAssignedAgentIsNull();
     List<Calls> findByRequiredSkillsContains(CallSkills skill);
-    List<Calls> findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(CallSkills skill);
+    List<Calls> findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(CallSkills skill);
     boolean existsByPhoneNumber(String phoneNumber);
     long countByStatus(CallStatus status);
 

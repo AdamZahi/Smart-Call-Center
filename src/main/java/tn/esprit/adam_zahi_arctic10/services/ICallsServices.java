@@ -23,7 +23,7 @@ public interface ICallsServices {
     List<Calls> findByStatus(CallStatus status);
     List<Calls> findByAssignedAgentIsNull();
     List<Calls> findByRequiredSkillsContains(CallSkills skill);
-    List<Calls> findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(CallSkills skill);
+    List<Calls> findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(CallSkills skill);
     boolean existsByPhoneNumber(String phoneNumber);
     long countByStatus(CallStatus status);
 }

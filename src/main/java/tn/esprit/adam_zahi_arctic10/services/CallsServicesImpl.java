@@ -194,8 +194,8 @@ public class CallsServicesImpl implements ICallsServices{
     }
 
     @Override
-    public List<Calls> findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(CallSkills skill) {
-        return callsRepository.findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(skill);
+    public List<Calls> findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(CallSkills skill) {
+        return callsRepository.findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(skill);
     }
 
     @Override

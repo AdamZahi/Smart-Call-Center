@@ -86,8 +86,8 @@ public class CallsRestController {
     }
 
     @GetMapping("getTop5ByCallsDateTimeAndRequiredSkillsIn/{skill}")
-    List<Calls> findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(@PathVariable CallSkills skill) {
-        return callsServices.findTop5ByOrderByCallsDateTimeAscAndRequiredSkillsIn(skill);
+    List<Calls> findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(@PathVariable CallSkills skill) {
+        return callsServices.findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(skill);
     }
 
     @GetMapping("existsByPhoneNumber/{phoneNumber}")
