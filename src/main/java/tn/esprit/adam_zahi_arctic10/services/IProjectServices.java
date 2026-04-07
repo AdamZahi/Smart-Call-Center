@@ -1,7 +1,7 @@
 package tn.esprit.adam_zahi_arctic10.services;
 
+import tn.esprit.adam_zahi_arctic10.dto.ProjectsDTO;
 import tn.esprit.adam_zahi_arctic10.entities.Agent;
-import tn.esprit.adam_zahi_arctic10.entities.Calls;
 import tn.esprit.adam_zahi_arctic10.entities.Project;
 
 import java.util.List;
@@ -19,4 +19,6 @@ public interface IProjectServices {
     List<Agent> getAgents(long projectId);
     Project assignToAgent(long projectId, long agentId);
 
+    ProjectsDTO findProjectDTO(long id);
+    ProjectsDTO getProjectDTO(Project project);
 }
