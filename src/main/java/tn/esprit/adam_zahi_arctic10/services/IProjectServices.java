@@ -21,4 +21,7 @@ public interface IProjectServices {
 
     ProjectsDTO findProjectDTO(long id);
     ProjectsDTO getProjectDTO(Project project);
+
+    double sumOfBudgetByAgentName(String agentName);
+    void sumProjectsByAgents();
 }
