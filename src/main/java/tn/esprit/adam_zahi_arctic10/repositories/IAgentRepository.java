@@ -39,4 +39,7 @@ public interface IAgentRepository extends JpaRepository<Agent, Long> {
 			HAVING COUNT(c) > 5
 			""")
 	List<Object[]> findTopActiveAgents();
+
+	@Query("SELECT a FROM Agent a JOIN a.projects p WHERE p.projectDetails.client = :clientName")
+	List<Agent> findAgentByClientName(String clientName);
 }
