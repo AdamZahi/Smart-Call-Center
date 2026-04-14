@@ -2,7 +2,9 @@ package tn.esprit.adam_zahi_arctic10;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableScheduling
 @SpringBootApplication
 public class AdamZahiArcTic10Application {
 
