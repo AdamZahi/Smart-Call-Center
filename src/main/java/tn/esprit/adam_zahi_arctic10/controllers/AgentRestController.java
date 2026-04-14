@@ -3,6 +3,7 @@ package tn.esprit.adam_zahi_arctic10.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.adam_zahi_arctic10.entities.Agent;
+import tn.esprit.adam_zahi_arctic10.entities.CallSkills;
 import tn.esprit.adam_zahi_arctic10.services.IAgentService;
 
 @RequestMapping("agent")
@@ -39,5 +40,10 @@ public class AgentRestController {
     @PostMapping("addAndAssignToProjects")
     public Agent AddAndAssignToProjects(@RequestBody Agent agent) {
         return agentService.AddAndAssignToProjects(agent);
+    }
+
+    @GetMapping("findBySkill/{skill}")
+    public Agent findAgentsBySkill(@PathVariable CallSkills skill) {
+        return agentService.findAgentsBySkill(skill);
     }
 }

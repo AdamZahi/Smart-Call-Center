@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.adam_zahi_arctic10.entities.Agent;
+import tn.esprit.adam_zahi_arctic10.entities.CallSkills;
 import tn.esprit.adam_zahi_arctic10.entities.Project;
 import tn.esprit.adam_zahi_arctic10.repositories.IAgentRepository;
 import tn.esprit.adam_zahi_arctic10.repositories.IProjectRepository;
@@ -57,5 +58,10 @@ public class AgentServiceImpl implements IAgentService {
             projectRepository.save(aProject);
         }
         return newAgent;
+    }
+
+    @Override
+    public Agent findAgentsBySkill(CallSkills skill) {
+        return agentRepository.findAgentsBySkill(skill).stream().findFirst().orElseThrow(()-> new EntityNotFoundException("No agent found with skill " + skill));
     }
 }
