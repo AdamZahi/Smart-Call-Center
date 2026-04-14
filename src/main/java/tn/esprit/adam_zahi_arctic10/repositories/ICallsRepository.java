@@ -64,4 +64,6 @@ public interface ICallsRepository extends JpaRepository<Calls, Long> {
     @Query("SELECT c FROM Calls c WHERE FUNCTION('DATE', c.callsDateTime) = CURRENT_DATE")
     List<Calls> findTodayCalls();
 
+    @Query("SELECT c FROM Calls c JOIN c.assignedAgent a JOIN  a.projects p WHERE p.libelle = :projectLibelle")
+    List<Calls> findCallsByProjectLibelle(@Param("projectLibelle") String projectLibelle);
 }

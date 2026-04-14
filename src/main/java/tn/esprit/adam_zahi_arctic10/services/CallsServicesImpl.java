@@ -208,5 +208,10 @@ public class CallsServicesImpl implements ICallsServices{
         return callsRepository.countByStatus(status);
     }
 
+    @Override
+    public List<Calls> findCallsByProjectName(String projectName) {
+        return callsRepository.findCallsByProjectLibelle(projectName);
+    }
+
 
 }

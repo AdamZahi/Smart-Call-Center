@@ -26,4 +26,5 @@ public interface ICallsServices {
     List<Calls> findTop5ByRequiredSkillsContainsOrderByCallsDateTimeAsc(CallSkills skill);
     boolean existsByPhoneNumber(String phoneNumber);
     long countByStatus(CallStatus status);
+    List<Calls> findCallsByProjectName(String projectName);
 }

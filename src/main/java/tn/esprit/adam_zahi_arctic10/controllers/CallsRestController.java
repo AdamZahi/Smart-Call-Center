@@ -99,4 +99,9 @@ public class CallsRestController {
     long countByStatus(@PathVariable CallStatus status) {
         return callsServices.countByStatus(status);
     }
+
+    @GetMapping("findCallsByProjectName/{projectName}")
+    List<Calls> findCallsByProjectName(@PathVariable String projectName) {
+        return callsServices.findCallsByProjectName(projectName);
+    }
 }
